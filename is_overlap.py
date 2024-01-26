@@ -1,6 +1,11 @@
 import sys
+import os
 
 class Program:
+    def debug(self, *args):
+        if os.getenv('DEBUG', '0') == '1':
+            print(*args)
+
     def usage(self):
         print("Two lines on the x-axis are needed as input arguments, like so:")
         print("    > python is_overlap.py \"(1,4)\" \"(2,3)\"")
@@ -29,6 +34,7 @@ class Program:
         return is_in_bounds
 
     def is_overlap(self, line_1, line_2):
+        self.debug("is_overlap", line_1, line_2)
         return (
             line_1 == line_2
             or self.is_pt_in_bounds(line_1[0], line_2)

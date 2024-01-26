@@ -13,7 +13,7 @@ class Program:
         print("    > python ver_cmp.py \"v2-alpha\" \"v2.0-alpha\"")
         exit(1)
 
-    def get_line(self, arg: str):
+    def get_ver(self, arg: str):
         parts = [part for part in re.split('[.]', arg)]
         return parts
 
@@ -40,8 +40,8 @@ class Program:
     def main(self):
         if len(sys.argv) != 3:
             self.usage()
-        ver_1 = self.get_line(sys.argv[1])
-        ver_2 = self.get_line(sys.argv[2])
+        ver_1 = self.get_ver(sys.argv[1])
+        ver_2 = self.get_ver(sys.argv[2])
         result = self.compare_versions(ver_1, ver_2)
         if result == -1:
             print(f"\"{sys.argv[1]}\" is less than \"{sys.argv[2]}\"")
